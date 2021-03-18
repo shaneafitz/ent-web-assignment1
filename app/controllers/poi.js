@@ -1,17 +1,25 @@
+"use strict";
+
 const Poi = {
-  index: {
+  home: {
     handler: function (request, h) {
-      return h.file("./app/views/main.html");
+      return h.view("home", { title: "Welcome" });
     },
   },
-  signup: {
+  report: {
     handler: function (request, h) {
-      return h.file("./app/views/signup.html");
+      return h.view("report", {
+        title: "Islands  ",
+        pois: this.pois,
+      });
     },
   },
-  login: {
+  create: {
     handler: function (request, h) {
-      return h.file("./app/views/login.html");
+      const data = request.payload;
+      data.creator = this.currentUser;
+      this.pois.push(data);
+      return h.redirect("/report");
     },
   },
 };
