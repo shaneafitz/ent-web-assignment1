@@ -3,7 +3,7 @@
 const Poi = {
   home: {
     handler: function (request, h) {
-      return h.view("home", { title: "Make a Donation" });
+      return h.view("home", { title: "Welcome" });
     },
   },
   report: {

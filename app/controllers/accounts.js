@@ -3,12 +3,12 @@
 const Accounts = {
   index: {
     handler: function (request, h) {
-      return h.view("main", { title: "Welcome to Donations" });
+      return h.view("main", { title: "Welcome" });
     },
   },
   showSignup: {
     handler: function (request, h) {
-      return h.view("signup", { title: "Sign up for Donations" });
+      return h.view("signup", { title: "Sign up" });
     },
   },
   signup: {
@@ -21,7 +21,7 @@ const Accounts = {
   },
   showLogin: {
     handler: function (request, h) {
-      return h.view("login", { title: "Login to Donations" });
+      return h.view("login", { title: "Login" });
     },
   },
   login: {

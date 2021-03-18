@@ -11,8 +11,8 @@ const server = Hapi.server({
 });
 
 server.bind({
-  users: {},
-  currentUser: {},
+  users: [],
+  currentUser: [],
   pois: [],
 });
 
