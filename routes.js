@@ -1,7 +1,7 @@
 "use strict";
 
 const Accounts = require("./app/controllers/accounts");
-const Poi = require("./app/controllers/poi");
+const Pois = require("./app/controllers/pois");
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -13,9 +13,9 @@ module.exports = [
   { method: "GET", path: "/settings", config: Accounts.showSettings },
   { method: "POST", path: "/settings", config: Accounts.updateSettings },
 
-  { method: "GET", path: "/home", config: Poi.home },
-  { method: "GET", path: "/report", config: Poi.report },
-  { method: "POST", path: "/create-poi", config: Poi.create },
+  { method: "GET", path: "/home", config: Pois.home },
+  { method: "GET", path: "/report", config: Pois.report },
+  { method: "POST", path: "/create-poi", config: Pois.create },
 
   {
     method: "GET",

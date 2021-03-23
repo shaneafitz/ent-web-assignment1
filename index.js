@@ -5,17 +5,20 @@ const Inert = require("@hapi/inert");
 const Vision = require("@hapi/vision");
 const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
+const env = require("dotenv");
+require("./app/models/db");
+env.config();
 
 const server = Hapi.server({
   port: 3000,
   host: "localhost",
 });
 
-server.bind({
-  users: [],
-  //currentUser: [],
-  pois: [],
-});
+//server.bind({
+// users: [],
+//currentUser: [],
+//pois: [],
+//});
 
 async function init() {
   await server.register(Inert);
@@ -34,7 +37,7 @@ async function init() {
   });
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "poi",
+      name: process.env.cookie_name,
       password: "password-should-be-32-characters",
       isSecure: false,
     },
