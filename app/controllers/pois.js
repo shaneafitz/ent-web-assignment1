@@ -21,16 +21,20 @@ const Pois = {
 
   create: {
     handler: async function (request, h) {
-      const id = request.auth.credentials.id;
-      const user = await User.findById(id);
-      const data = request.payload;
-      const newPoi = new Poi({
-        name: data.name,
-        description: data.description,
-        creator: user._id,
-      });
-      await newPoi.save();
-      return h.redirect("/report");
+      try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
+        const data = request.payload;
+        const newPoi = new Poi({
+          name: data.name,
+          description: data.description,
+          creator: user._id,
+        });
+        await newPoi.save();
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
     },
   },
 };
