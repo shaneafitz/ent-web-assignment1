@@ -10,6 +10,7 @@ const poiSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  imageUrl: String,
 });
 
 module.exports = Mongoose.model("Poi", poiSchema);

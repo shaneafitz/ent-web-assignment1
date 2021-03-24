@@ -7,10 +7,17 @@ const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
 const Joi = require("@hapi/joi");
 const env = require("dotenv");
+const ImageStore = require("./app/utils/image-store");
 require("./app/models/db");
 env.config();
 
 const dotenv = require("dotenv");
+
+const credentials = {
+  cloud_name: process.env.name,
+  api_key: process.env.key,
+  api_secret: process.env.secret,
+};
 
 const result = dotenv.config();
 if (result.error) {
@@ -33,6 +40,8 @@ async function init() {
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
+  ImageStore.configure(credentials);
+
   server.validator(require("@hapi/joi"));
   server.views({
     engines: {
